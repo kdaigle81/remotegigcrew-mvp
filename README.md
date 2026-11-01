@@ -1,26 +1,15 @@
 # RemoteGigCrew MVP
-Fully automated AI agent crew for remote job hunting.
 
-## Agents
-- Scout: finds 5 remote jobs matching prefs
-- Tailor: rewrites resume + cover letter
-- Applier: generates ready-to-send application texts
-- Manager: runs the full pipeline
+Automated AI crew for remote jobs.
 
-## Payments
-Solana USDC subscriptions via official Subscriptions Program (De1egAFMkMWZSN5rYXRj9CAdheBamobVNubTsi9avR44).
-No middleman fees. Start with $0. Deploy plan, users subscribe once, you pull forever.
+## Setup
+1. `pip install -r requirements.txt`
+2. Set `OPENAI_API_KEY` and `STRIPE_SECRET_KEY` in .env
+3. `uvicorn app:app --reload`
+4. Open http://localhost:8000
 
-## Run
-1. `npm install`
-2. Set OPENAI_API_KEY
-3. `npm run dev`
-4. For Solana: follow https://solana.com/docs/payments/subscriptions
+Agents: Scout finds jobs from RemoteOK, Tailor rewrites resume/cover, Applier packages applications.
 
-## Scale
-- Webhook on sub events → auto-welcome email
-- Cron for daily sales posts (Reddit/X via APIs)
-- Google Sheet tracker via connected tools
-- Self-running agent crews on Vercel + Solana keepers
+Payments: Stripe or Solana (add wallet).
 
-Fork and go live in 5 mins.
+Run free, scale with paid users.

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RemoteGigCrew</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: auto; padding: 20px; }
+        textarea, input { width: 100%; margin: 10px 0; }
+        button { background: #007bff; color: white; padding: 10px; }
+        #result { white-space: pre-wrap; margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>RemoteGigCrew.ai - AI Job Crew</h1>
+    <form id="crewForm">
+        <input name="name" placeholder="Your Name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <textarea name="resume" placeholder="Paste resume" rows="8" required></textarea>
+        <textarea name="prefs" placeholder="Job prefs e.g. remote software engineer python" rows="3" required></textarea>
+        <button type="submit">Run Crew (Scout → Tailor → Applier)</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        document.getElementById('crewForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const form = new FormData(e.target);
+            const res = await fetch('/run-crew', { method: 'POST', body: form });
+            const data = await res.json();
+            document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+        };
+    </script>
+    <p>Pay with Stripe or Solana to unlock full packages. Daily sales agents for growth.</p>
+</body>
+</html>
